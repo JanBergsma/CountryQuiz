@@ -1,0 +1,39 @@
+/* Main page styling*/
+body {
+  place-content: center;
+  display: grid;
+  min-height: 100dvh;
+  background-image: url("./background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: -1.4rem;
+  ;
+}
+
+h1 {
+  color: #f2f2f2;
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+main {
+  width: auto;
+  aspect-ratio: 460/515;
+  background: #fff;
+  border-radius: 24px;
+  margin: auto;
+}
+
+section {
+  display: grid;
+  place-content: center;
+}

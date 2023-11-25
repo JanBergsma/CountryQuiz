@@ -1,17 +1,15 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
   <header>
-    <div class="wrapper">
-      <h1>Hello</h1>
-      <!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
-    </div>
-  </header>
+    <h1>Country quiz</h1>
+    <img src="./assets/undrawAdventure.svg" alt="Country Quiz Picture" />
 
-  <!-- <RouterView /> -->
+  </header>
+  <main>
+    <RouterView />
+  </main>
 </template>
 
