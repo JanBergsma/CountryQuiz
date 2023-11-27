@@ -46946,8 +46946,9 @@ const data = [
 ]
 
 const json = data.map((c) => ({
-  name: c['name']['common'],
+  country: c['name']['common'],
+  capital: c['capital'] ? c['capital'][0] : c['capital'],
   flag: c['flags']['svg']
 }))
 
-fs.writeFileSync('test.json', JSON.stringify(json))
+fs.writeFileSync('../countries.json', JSON.stringify(json))
