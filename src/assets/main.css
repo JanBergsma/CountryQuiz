@@ -1,3 +1,11 @@
+/* Variables */
+:root {
+  --color: #2f527b;
+  --bg-color: #fff;
+  --title-color: #f2f2f2;
+  --border-color: #6066d0b2;
+}
+
 /* Main page styling*/
 body {
   place-content: center;
@@ -12,13 +20,12 @@ body {
 header {
   display: grid;
   grid-auto-flow: column;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: -1.4rem;
 }
 
 h1 {
-  color: #f2f2f2;
+  color: var(--title-color);
   font-size: 2.25rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -33,17 +40,22 @@ h1 {
 h2,
 h3 {
   display: block;
-  color: #2f527b;
+  color: var(--color);
   font-size: 1.5rem;
   font-weight: 700;
   word-wrap: break-word;
   margin: 0.4rem 0;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
 }
 
 main {
-  width: auto;
+  width: 100%;
   aspect-ratio: 460/515;
-  background: #fff;
+  background: var(--bg-color);
   border-radius: 24px;
   margin: auto;
 }
@@ -56,6 +68,19 @@ main {
 
 a {
   display: block;
+  text-decoration: none;
+}
+
+
+.btn {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  height: 2rem;
+  width: 20rem;
+  padding: 2rem;
 }
 
 section {
