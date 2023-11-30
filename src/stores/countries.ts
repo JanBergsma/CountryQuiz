@@ -1,4 +1,5 @@
 import countries from '@/stores/countries.json'
+import type { Question } from '@/types/question'
 
 const n = countries.length
 
@@ -17,28 +18,43 @@ function getFourUniqueValues() {
   return fourValues
 }
 
-export function getRandomCapitalQuestion() {
+function shuffleArray(indici: number[]) {
+  for (let i = indici.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const temp = indici[i]
+    indici[i] = indici[j]
+    indici[j] = temp
+  }
+}
+
+export function getRandomCapitalQuestion(): Question {
   const fourValues = getFourUniqueValues()
+  const correctAnswer = fourValues[0]
+  shuffleArray(fourValues)
   return {
-    country: countries[fourValues[0]].country,
-    capitals: [
-      countries[fourValues[0]].capital,
-      countries[fourValues[1]].capital,
-      countries[fourValues[2]].capital,
-      countries[fourValues[3]].capital
+    question: countries[correctAnswer].country,
+    correctOption: countries[correctAnswer].capital as string,
+    options: [
+      countries[fourValues[0]].capital as string,
+      countries[fourValues[1]].capital as string,
+      countries[fourValues[2]].capital as string,
+      countries[fourValues[3]].capital as string
     ]
   }
 }
 
-export function getRandomFlagQuestion() {
+export function getRandomFlagQuestion(): Question {
   const fourValues = getFourUniqueValues()
+  const correctAnswer = fourValues[0]
+  shuffleArray(fourValues)
   return {
-    country: countries[fourValues[0]].country,
-    flags: [
-      countries[fourValues[0]].flag,
-      countries[fourValues[1]].flag,
-      countries[fourValues[2]].flag,
-      countries[fourValues[3]].flag
+    question: countries[correctAnswer].country,
+    correctOption: countries[correctAnswer].flag as string,
+    options: [
+      countries[fourValues[0]].flag as string,
+      countries[fourValues[1]].flag as string,
+      countries[fourValues[2]].flag as string,
+      countries[fourValues[3]].flag as string
     ]
   }
 }

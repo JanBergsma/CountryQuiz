@@ -53,7 +53,7 @@ h2 {
 }
 
 main {
-  width: 100%;
+  width: 30rem;
   aspect-ratio: 460/515;
   background: var(--bg-color);
   border-radius: 24px;
@@ -71,7 +71,6 @@ a {
   text-decoration: none;
 }
 
-
 .btn {
   font-size: 1.125rem;
   font-weight: 500;
@@ -81,6 +80,23 @@ a {
   height: 2rem;
   width: 20rem;
   padding: 2rem;
+}
+
+.btn-option {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2rem;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+
+.correct-answer {
+  background: green;
+}
+
+.wrong-answer {
+  background: red;
 }
 
 section {

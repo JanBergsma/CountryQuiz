@@ -6,8 +6,20 @@ import "../src/assets/main.css";
 </script>
 
 <template>
-    <div class="wrapper">
+    <main class="wrapper">
+        <header>
+            <h1>Country quiz</h1>
+            <img src="../src/assets/undrawAdventure.svg" alt="Country Quiz Picture" />
+
+        </header>
         <slot />
-    </div>
+    </main>
 </template>
+
+
+<style>
+/* body {
+    background: white;
+} */
+</style>
 
