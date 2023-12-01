@@ -2,8 +2,11 @@
 :root {
   --color: #2f527b;
   --bg-color: #fff;
-  --title-color: #f2f2f2;
+  --bg-color-correct-answer: #60bf88;
+  --bg-color-wrong-answer: #ea8282;
+  --bg-color-hover-clicked: #f9a826;
   --border-color: #6066d0b2;
+  --title-color: #f2f2f2;
 }
 
 /* Main page styling*/
@@ -82,6 +85,11 @@ a {
   padding: 2rem;
 }
 
+.btn:hover,
+.btn:active {
+  background: var(--bg-color-hover-clicked);
+}
+
 .btn-option {
   display: grid;
   grid-auto-flow: column;
@@ -92,11 +100,21 @@ a {
 
 
 .correct-answer {
-  background: green;
+  background: var(--bg-color-correct-answer);
+}
+
+.correct-answer:hover,
+.correct-answer:active {
+  background: var(--bg-color-correct-answer);
 }
 
 .wrong-answer {
-  background: red;
+  background: var(--bg-color-wrong-answer);
+}
+
+.wrong-answer:hover,
+.wrong-answer:active {
+  background: var(--bg-color-wrong-answer);
 }
 
 section {
@@ -105,4 +123,9 @@ section {
   padding: 2rem;
   height: 100%;
   gap: 4rem;
+}
+
+.country-flag {
+  width: 84px;
+  height: 54px;
 }

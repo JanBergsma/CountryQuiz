@@ -1,22 +1,32 @@
 <template>
     <section>
-        <div class="title">
-            <h2>{{ question.question }}</h2>
+        <div v-if="props.questionKind === 'capital'" class="title">
+            <h2>{{ question.question }} is the capital of?</h2>
+        </div>
+        <div v-else class="title">
+            <img class="country-flag" :src="question.question" alt="Which country does this flag belong to?" width="500"
+                height="600">
+            <h2>Which country does this flag belong to?</h2>
         </div>
         <div class="options">
             <button @click="(event) => checkAnswer(option, event)" class="btn btn-option"
-                v-for="(option, index) in question.options" :key="index">
+                v-for="( option, index ) in  question.options " :key="index">
                 <div>{{ getLetter(index) }}</div>
                 <div>{{ option }}</div>
             </button>
         </div>
+        <a v-if="answerHasBeenGiven" :href="nextLink" class="next-btn">Next</a>
     </section>
 </template>
 
 <script setup lang="ts">
-
-const props = defineProps<{ questionKind: String }>()
 import { getRandomCapitalQuestion, getRandomFlagQuestion } from '@/stores/countries';
+import { useGameStore } from '@/stores/game';
+import { computed, ref } from 'vue';
+
+const gameStore = useGameStore()
+const props = defineProps<{ questionKind: String }>()
+
 const getLetter = (index: number): string => {
     switch (index) {
         case 0:
@@ -31,11 +41,15 @@ const getLetter = (index: number): string => {
 }
 
 const question = props.questionKind === "capital" ? getRandomCapitalQuestion() : getRandomFlagQuestion()
+const answerHasBeenGiven = ref(false)
+const nextLink = computed(() => {
+    if (gameStore.MAX_QUESTIONS === gameStore.getquestionsCorrect())
+        return '/reults'
+    return `/${props.questionKind}`
+
+})
 
 function checkAnswer(option: string, event: Event) {
-    console.log(`checkAnswer(${option}) = ${option === question.correctOption}`)
-    console.log(event.target)
-
     let button = event.target as HTMLElement
     while (button && button.parentElement && button.tagName !== 'BUTTON') {
         button = button.parentElement
@@ -43,10 +57,12 @@ function checkAnswer(option: string, event: Event) {
 
     if (option === question.correctOption) {
         button.classList.add('correct-answer')
+        gameStore.incrementQuestionsCorrect()
     } else {
         button.classList.add('wrong-answer')
     }
-    event.stopPropagation()
+    gameStore.incrementQuestionsAsked()
+    answerHasBeenGiven.value = true
 }
 </script>
 

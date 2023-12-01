@@ -32,13 +32,13 @@ export function getRandomCapitalQuestion(): Question {
   const correctAnswer = fourValues[0]
   shuffleArray(fourValues)
   return {
-    question: countries[correctAnswer].country,
-    correctOption: countries[correctAnswer].capital as string,
+    question: countries[correctAnswer].capital as string,
+    correctOption: countries[correctAnswer].country as string,
     options: [
-      countries[fourValues[0]].capital as string,
-      countries[fourValues[1]].capital as string,
-      countries[fourValues[2]].capital as string,
-      countries[fourValues[3]].capital as string
+      countries[fourValues[0]].country as string,
+      countries[fourValues[1]].country as string,
+      countries[fourValues[2]].country as string,
+      countries[fourValues[3]].country as string
     ]
   }
 }
@@ -48,13 +48,13 @@ export function getRandomFlagQuestion(): Question {
   const correctAnswer = fourValues[0]
   shuffleArray(fourValues)
   return {
-    question: countries[correctAnswer].country,
-    correctOption: countries[correctAnswer].flag as string,
+    question: countries[correctAnswer].flag,
+    correctOption: countries[correctAnswer].country as string,
     options: [
-      countries[fourValues[0]].flag as string,
-      countries[fourValues[1]].flag as string,
-      countries[fourValues[2]].flag as string,
-      countries[fourValues[3]].flag as string
+      countries[fourValues[0]].country as string,
+      countries[fourValues[1]].country as string,
+      countries[fourValues[2]].country as string,
+      countries[fourValues[3]].country as string
     ]
   }
 }
