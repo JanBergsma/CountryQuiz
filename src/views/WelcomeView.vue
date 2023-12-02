@@ -12,5 +12,9 @@
 </template>
 
 <script setup lang="ts">
+import { useGameStore } from '@/stores/game';
+const gameStore = useGameStore()
+
+gameStore.reset()
 </script>
 

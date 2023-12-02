@@ -15,7 +15,7 @@
                 <div>{{ option }}</div>
             </button>
         </div>
-        <a v-if="answerHasBeenGiven" :href="nextLink" class="next-btn">Next</a>
+        <a v-if="answerHasBeenGiven" :href="nextLink" class="btn-next">Next</a>
     </section>
 </template>
 
@@ -24,8 +24,8 @@ import { getRandomCapitalQuestion, getRandomFlagQuestion } from '@/stores/countr
 import { useGameStore } from '@/stores/game';
 import { computed, ref } from 'vue';
 
-const gameStore = useGameStore()
 const props = defineProps<{ questionKind: String }>()
+const gameStore = useGameStore()
 
 const getLetter = (index: number): string => {
     switch (index) {
@@ -43,8 +43,8 @@ const getLetter = (index: number): string => {
 const question = props.questionKind === "capital" ? getRandomCapitalQuestion() : getRandomFlagQuestion()
 const answerHasBeenGiven = ref(false)
 const nextLink = computed(() => {
-    if (gameStore.MAX_QUESTIONS === gameStore.getquestionsCorrect())
-        return '/reults'
+    if (gameStore.MAX_QUESTIONS <= gameStore.getQuestionsAsked())
+        return '/results'
     return `/${props.questionKind}`
 
 })
