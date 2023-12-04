@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
+import { useGameStore } from './stores/game';
 const route = useRoute()
-
+const gameStore = useGameStore()
 </script>
 
 <template>
@@ -11,7 +12,7 @@ const route = useRoute()
 
   </header>
   <main>
-    <RouterView />
+    <RouterView :key="gameStore.key" />
   </main>
 </template>
 

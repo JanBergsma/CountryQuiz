@@ -1,8 +1,7 @@
 <template>
     <section>
         <div v-if="props.questionKind === 'capital'" class="title">
-            <h2 v-if="question.question">{{ question.question }} is the capital of?</h2>
-            <h2 v-else>Which country has no capital?</h2>
+            <h2>{{ question.question }} is the capital of?</h2>
         </div>
         <div v-else class="title">
             <img class="country-flag" :src="question.question" alt="Which country does this flag belong to?" width="500"
@@ -16,7 +15,8 @@
                 <div>{{ option }}</div>
             </button>
         </div>
-        <a v-if="answerHasBeenGiven" :href="nextLink" class="btn-next">Next</a>
+        <RouterLink v-if="ready && answerHasBeenGiven" to="/results" class="btn-next">Next</RouterLink>
+        <button v-if="!ready && answerHasBeenGiven" class="btn-next" @click="gameStore.changeKey()">Next</button>
     </section>
 </template>
 
@@ -43,12 +43,7 @@ const getLetter = (index: number): string => {
 
 const question = props.questionKind === "capital" ? getRandomCapitalQuestion() : getRandomFlagQuestion()
 const answerHasBeenGiven = ref(false)
-const nextLink = computed(() => {
-    if (gameStore.MAX_QUESTIONS <= gameStore.getQuestionsAsked())
-        return '/results'
-    return `/${props.questionKind}`
-
-})
+const ready = computed(() => gameStore.MAX_QUESTIONS <= gameStore.getQuestionsAsked())
 
 function checkAnswer(option: string, event: Event) {
     let button = event.target as HTMLElement
@@ -65,5 +60,6 @@ function checkAnswer(option: string, event: Event) {
     gameStore.incrementQuestionsAsked()
     answerHasBeenGiven.value = true
 }
+
 </script>
 

@@ -6,6 +6,7 @@ const MAX_QUESTIONS = 4
 export const useGameStore = defineStore('scores', () => {
   const questionsAsked = ref(+JSON.parse(localStorage.getItem('questionsAsked') || `0`))
   const questionsCorrect = ref(+JSON.parse(localStorage.getItem('questionsCorrect') || `0`))
+  const key = ref(0)
 
   watch(questionsAsked, (newQuestionsAsked) => {
     localStorage.setItem('questionsAsked', JSON.stringify(newQuestionsAsked))
@@ -13,6 +14,11 @@ export const useGameStore = defineStore('scores', () => {
   watch(questionsCorrect, (newQuestionsCorrect) => {
     localStorage.setItem('questionsCorrect', JSON.stringify(newQuestionsCorrect))
   })
+
+  function changeKey() {
+    console.log('changekey')
+    key.value += 1
+  }
 
   function incrementQuestionsAsked() {
     ++questionsAsked.value
@@ -42,6 +48,8 @@ export const useGameStore = defineStore('scores', () => {
     reset,
     questionsAsked,
     questionsCorrect,
+    key,
+    changeKey,
     getQuestionsAsked,
     getquestionsCorrect
   }

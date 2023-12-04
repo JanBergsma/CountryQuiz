@@ -5,8 +5,8 @@
             <h3>What do you want to be quizzed about?</h3>
         </div>
         <div class="options">
-            <a href="capital" class="btn">Quiz me about capitals.</a>
-            <a href="flag" class="btn">Quiz me about flags.</a>
+            <RouterLink to="capital" class="btn">Quiz me about capitals.</RouterLink>
+            <RouterLink to="flag" class="btn">Quiz me about flags.</RouterLink>
         </div>
     </section>
 </template>
