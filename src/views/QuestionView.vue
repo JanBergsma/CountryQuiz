@@ -1,7 +1,8 @@
 <template>
     <section>
         <div v-if="props.questionKind === 'capital'" class="title">
-            <h2>{{ question.question }} is the capital of?</h2>
+            <h2 v-if="question.question">{{ question.question }} is the capital of?</h2>
+            <h2 v-else>Which country has no capital?</h2>
         </div>
         <div v-else class="title">
             <img class="country-flag" :src="question.question" alt="Which country does this flag belong to?" width="500"
